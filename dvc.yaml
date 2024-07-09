@@ -18,7 +18,7 @@ stages:
     outs:
     - data/processed/train_processed.csv
     - data/processed/test_processed.csv
-  
+
   model_training:
     cmd: python src/model_training.py
     deps:
@@ -34,7 +34,7 @@ stages:
   model_evaluation:
     cmd: python src/model_evaluation.py
     deps:
-    - data/processed/test_processed
+    - data/processed/test_processed.csv
     - model.pkl
     - src/model_evaluation.py
     params:
@@ -45,3 +45,10 @@ stages:
     - model_training.n_estimators
     outs:
     - metrics.json
+params:
+- dvclive/params.yaml
+metrics:
+- dvclive/metrics.json
+plots:
+- dvclive/plots/metrics:
+    x: step

@@ -4,5 +4,5 @@ feature_engineering:
 model_training:
   n_estimators: 16
   max_depth: 3
-  bootstrap: false
-  criterion: gini
+  bootstrap: true
+  criterion: entropy
